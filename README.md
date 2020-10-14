@@ -17,4 +17,5 @@ low blood pressure.
 - Why did you make this?
 
 I have been extremely into fitness and working out for a long time, and with that comes the unavoidable need to 
-control what you eat on a day-to-day basis. Thus, an application like this would be a lifesaver for me!
+control what you eat on a day-to-day basis. Thus, making an application which helps you do that is not only a fun 
+project, but also something that I can use in my life!
