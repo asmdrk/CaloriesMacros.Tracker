@@ -50,6 +50,8 @@ public class FoodTracker {
         totalProtein = totalProtein - f.getProtein();
     }
 
+
+
     public int getTotalCalories() {
         return totalCalories;
     }
