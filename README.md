@@ -20,7 +20,7 @@ I have been extremely into fitness and working out for a long time, and with tha
 control what you eat on a day-to-day basis. Thus, making an application which helps you do that is not only a fun 
 project, but also something that I can use in my life!
 
-##User Stories
+## User Stories
 - I want to be able to add food items I've eaten and their nutritional information to the tracker.
 
 - I want to be able to view the total nutritional information for all the items I have entered.
