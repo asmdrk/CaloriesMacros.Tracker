@@ -22,9 +22,7 @@ public class Food {
         protein = p;
     }
 
-    public String getName() {
-        return name;
-    }
+
 
     public int getCals() {
         return cals;
