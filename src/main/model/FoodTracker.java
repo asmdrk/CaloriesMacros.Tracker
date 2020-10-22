@@ -22,6 +22,7 @@ public class FoodTracker {
         totalCarbs = 0;
         totalProtein = 0;
     }
+
     /*MODIFIES: this
      *EFFECTS: Adds food f to foodArray, and adds its nutritional info to the totals.
      */
@@ -65,7 +66,6 @@ public class FoodTracker {
     }
 
 
-
     public int getTotalCalories() {
         return totalCalories;
     }
@@ -81,7 +81,6 @@ public class FoodTracker {
     public int getTotalProtein() {
         return totalProtein;
     }
-
 
 
 }
