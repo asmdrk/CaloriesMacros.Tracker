@@ -71,6 +71,8 @@ public class TrackerApp {
 
     }
 
+
+    //EFFECTS: saves FoodTrackers current state to a file in Json format
     private void doSave() {
         try {
             jsonWriter.open();
@@ -82,6 +84,7 @@ public class TrackerApp {
         }
     }
 
+    //EFFECTS: loads FoodTrackers state from a Json file
     private void doLoad() {
         try {
             ft = jsonReader.read();

@@ -46,6 +46,8 @@ public class Food implements Writeable {
         return protein;
     }
 
+
+    //EFFECTS: saves food class as a Json Object
     @Override
     public JSONObject toJson() {
         JSONObject json = new JSONObject();

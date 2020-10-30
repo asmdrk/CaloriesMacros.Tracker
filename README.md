@@ -29,6 +29,6 @@ project, but also something that I can use in my life!
 
 - I want to be able to know when I have reached my calorie limit, or how many calories I have left for the day.
 
-- I want to able to save the nutritional info for the food consumed in a given day.
+- I want to be able to save the nutritional info I have entered into the application.
 
-- I want to be able to load the nutritional info for the food consumed for a given a day.
+- I want to be able to load the nutritional info that I have entered into the application. 

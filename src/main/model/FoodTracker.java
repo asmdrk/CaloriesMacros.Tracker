@@ -50,7 +50,7 @@ public class FoodTracker implements Writeable {
     }
 
     /*MODIFIES: this
-     *EFFECTS: Addz nutritional info of food to total nutritional info of foodTracker.
+     *EFFECTS: Adds nutritional info of food to total nutritional info of foodTracker.
      */
     private void addTotal(Food f) {
         totalCalories = totalCalories + f.getCals();
@@ -97,6 +97,7 @@ public class FoodTracker implements Writeable {
 
 
 
+    //EFFECTS: Saves FoodTracker as a Json object
     @Override
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
@@ -105,7 +106,7 @@ public class FoodTracker implements Writeable {
 
     }
 
-    // EFFECTS: returns things in this workroom as a JSON array
+    // EFFECTS: returns Food in the FoodArray as a JSON array
     private JSONArray foodToJson() {
         JSONArray jsonArray = new JSONArray();
 

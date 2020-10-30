@@ -12,6 +12,9 @@ import java.util.stream.Stream;
 
 import org.json.*;
 
+// Represents a reader that reads FoodTracker from JSON data stored in file
+// NOTE: This class, along with all other classes in the persistence package and the tests for the persistence
+// package are based heavily on the JsonSerializationDemo application provided to us.
 public class JsonReader {
     private String source;
 
@@ -49,7 +52,7 @@ public class JsonReader {
     }
 
     // MODIFIES: ft
-    // EFFECTS: parses food from JSON object and adds them to foodtracker
+    // EFFECTS: parses food from JSON object and adds them to FoodTracker
     private void addFoods(FoodTracker ft, JSONObject jsonObject) {
         JSONArray jsonArray = jsonObject.getJSONArray("list");
         for (Object json : jsonArray) {
