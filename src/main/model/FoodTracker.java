@@ -86,6 +86,14 @@ public class FoodTracker implements Writeable {
         return totalProtein;
     }
 
+    public ArrayList<Food> getArray() {
+        return foodArray;
+    }
+
+    public int getArraySize() {
+        return foodArray.size();
+    }
+
 
 
 

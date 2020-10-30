@@ -25,6 +25,10 @@ public class Food implements Writeable {
         protein = p;
     }
 
+    public String getName() {
+        return name;
+    }
+
 
     public int getCals() {
         return cals;
