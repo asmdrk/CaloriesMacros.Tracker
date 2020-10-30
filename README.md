@@ -28,3 +28,7 @@ project, but also something that I can use in my life!
 - I want to be able to have a calorie limit, and have the ability to change it.
 
 - I want to be able to know when I have reached my calorie limit, or how many calories I have left for the day.
+
+- I want to able to save the nutritional info for the food consumed in a given day.
+
+- I want to be able to load the nutritional info for the food consumed for a given a day.

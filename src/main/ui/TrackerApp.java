@@ -3,18 +3,27 @@ package ui;
 
 import model.Food;
 import model.FoodTracker;
+import persistence.JsonReader;
+import persistence.JsonWriter;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Scanner;
 
 //Food tracking application
 //Note: The structure of this class is based on the BankTeller project provided to us on edx.
 public class TrackerApp {
+    private static final String JSON_STORE = "./data/foodtracker.json";
     private FoodTracker ft;
     private Scanner input;
     private int calorieLimit = 2000;
+    private JsonWriter jsonWriter;
+    private JsonReader jsonReader;
 
     //EFFECTS: runs the tracking application.
-    public TrackerApp() {
+    public TrackerApp() throws FileNotFoundException {
+        jsonWriter = new JsonWriter(JSON_STORE);
+        jsonReader = new JsonReader(JSON_STORE);
         runTracker();
     }
 
@@ -48,14 +57,38 @@ public class TrackerApp {
     private void processCommand(String command) {
         if (command.equals("a")) {
             doAddFood();
-        } else if (command.equals("s")) {
+        } else if (command.equals("c")) {
             doSetCalories();
         } else if (command.equals("t")) {
             doTotals();
+        } else if (command.equals("s")) {
+            doSave();
+        } else if (command.equals("l")) {
+            doLoad();
         } else {
             System.out.println("Invalid Command");
         }
 
+    }
+
+    private void doSave() {
+        try {
+            jsonWriter.open();
+            jsonWriter.write(ft);
+            jsonWriter.close();
+            System.out.println("Saved all the nutritional value and totals to " + JSON_STORE);
+        } catch (FileNotFoundException e) {
+            System.out.println("Unable to write to file: " + JSON_STORE);
+        }
+    }
+
+    private void doLoad() {
+        try {
+            ft = jsonReader.read();
+            System.out.println("Loaded nutritional info and totals from " + JSON_STORE);
+        } catch (IOException e) {
+            System.out.println("Unable to read from file: " + JSON_STORE);
+        }
     }
 
 
@@ -64,8 +97,10 @@ public class TrackerApp {
         System.out.println("\nSelect from:");
         System.out.println("\tcurrent calorie limit:" + calorieLimit);
         System.out.println("\ta -> add food item");
-        System.out.println("\ts -> set calorie limit");
+        System.out.println("\tc -> change calorie limit");
         System.out.println("\tt -> view the total nutritional info of food items");
+        System.out.println("\ts -> save currently entered nutritional values to file");
+        System.out.println("\tl -> load nutritional values from file");
         System.out.println("\tq -> quit");
     }
 

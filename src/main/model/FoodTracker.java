@@ -1,10 +1,14 @@
 package model;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+import persistence.Writeable;
+
 import java.util.ArrayList;
 
 //foodTracker represents a list of food items with their name and nutritional information,
 //along with the total nutritional info of all the items in the list.
-public class FoodTracker {
+public class FoodTracker implements Writeable {
     private ArrayList<Food> foodArray;
     int totalCalories;
     int totalFat;
@@ -22,6 +26,7 @@ public class FoodTracker {
         totalCarbs = 0;
         totalProtein = 0;
     }
+
     /*MODIFIES: this
      *EFFECTS: Adds food f to foodArray, and adds its nutritional info to the totals.
      */
@@ -65,7 +70,6 @@ public class FoodTracker {
     }
 
 
-
     public int getTotalCalories() {
         return totalCalories;
     }
@@ -84,6 +88,25 @@ public class FoodTracker {
 
 
 
+
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("list", foodToJson());
+        return json;
+
+    }
+
+    // EFFECTS: returns things in this workroom as a JSON array
+    private JSONArray foodToJson() {
+        JSONArray jsonArray = new JSONArray();
+
+        for (Food f : foodArray) {
+            jsonArray.put(f.toJson());
+        }
+
+        return jsonArray;
+    }
 }
 
 
