@@ -50,7 +50,7 @@ public class FoodTracker implements Writeable {
     }
 
     /*MODIFIES: this
-     *EFFECTS: Adds nutritional info of food to total nutritional info of foodTracker.
+     *EFFECTS: Addz nutritional info of food to total nutritional info of foodTracker.
      */
     private void addTotal(Food f) {
         totalCalories = totalCalories + f.getCals();
