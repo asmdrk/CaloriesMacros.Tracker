@@ -10,6 +10,7 @@ public class DetailsPanel extends JPanel {
 
     private EventListenerList listenerList = new EventListenerList();
 
+
     public DetailsPanel() {
         JLabel nameLabel = new JLabel("Food Name:");
         JLabel calLabel = new JLabel("Calories:");

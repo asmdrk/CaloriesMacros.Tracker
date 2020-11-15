@@ -12,16 +12,20 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.File;
+import java.net.MalformedURLException;
+import java.net.URL;
 
 public class MainFrame extends JFrame {
     private static final String JSON_STORE = "./data/foodtracker.json";
-    private DetailsPanel detailsPanel;
     private FoodTracker ft;
-    private JsonWriter jsonWriter;
-    private JsonReader jsonReader;
+    private final JsonWriter jsonWriter;
+    private final JsonReader jsonReader;
+    URL soundbyte = new File("src/main/Sounds/beep-07.wav").toURI().toURL();
+    java.applet.AudioClip clip = java.applet.Applet.newAudioClip(soundbyte);
 
 
-    public MainFrame(String title) {
+    public MainFrame(String title) throws MalformedURLException {
         super(title);
         ft = new FoodTracker();
         jsonWriter = new JsonWriter(JSON_STORE);
@@ -35,11 +39,11 @@ public class MainFrame extends JFrame {
         JTextArea ta = new JTextArea();
         JButton buttonsave = new JButton("Save");
         JButton buttonload = new JButton("Load");
-        JButton buttonadd = new JButton("Add Food Item");
         JButton buttontotal = new JButton("View Totals");
 
 
-        detailsPanel = new DetailsPanel();
+        DetailsPanel detailsPanel = new DetailsPanel();
+        detailsPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 
         detailsPanel.addDetailListener(new DetailListener() {
             public void detailEventOccured(DetailEvent event) {
@@ -48,6 +52,7 @@ public class MainFrame extends JFrame {
                 try {
                     ft.addFood(f);
                     ta.append(text + "\n");
+                    clip.play();
                 } catch (NumberFormatException nfe) {
                     ta.append("Nutritional Values must be integers");
                 }
@@ -64,6 +69,8 @@ public class MainFrame extends JFrame {
                         + "Total Protein" + ft.getTotalProtein() + "\n";
 
                 ta.append(text);
+                clip.play();
+
             }
 
         });
@@ -76,6 +83,8 @@ public class MainFrame extends JFrame {
                     jsonWriter.write(ft);
                     jsonWriter.close();
                     ta.append("Saved all the nutritional value and totals to " + JSON_STORE);
+                    clip.play();
+
                 } catch (FileNotFoundException f) {
                     System.out.println("Unable to write to file: " + JSON_STORE);
                 }
@@ -88,6 +97,7 @@ public class MainFrame extends JFrame {
                 try {
                     ft = jsonReader.read();
                     ta.append("Loaded nutritional info and totals from " + JSON_STORE + "\n");
+                    clip.play();
                     for (Food f : ft.getArray()) {
                         ta.append("Food Name: " + f.getName() + ", Calories: " + f.getCals()
                                 + ", Fat: " + f.getFat()
@@ -108,6 +118,10 @@ public class MainFrame extends JFrame {
         c.add(ta, BorderLayout.CENTER);
         c.add(buttontotal, BorderLayout.NORTH);
 
+
+
+        java.applet.AudioClip clip = java.applet.Applet.newAudioClip(soundbyte);
+        clip.play();
 
     }
 
