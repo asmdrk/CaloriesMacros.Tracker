@@ -34,10 +34,9 @@ public class DetailsPanel extends JPanel {
                 String carbs = carbField.getText();
                 String protein = proteinField.getText();
 
-                String text = "Food Name: " + name + ", Calories: " + cal
-                        + ", Fat: " + fat + ", Carbohydrates: " + carbs + ", Protein: " + protein;
 
-                fireDetailEvent(new DetailEvent(this, text));
+
+                fireDetailEvent(new DetailEvent(this, name, cal, fat, carbs, protein));
             }
         });
 

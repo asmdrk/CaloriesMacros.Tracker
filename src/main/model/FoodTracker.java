@@ -30,7 +30,7 @@ public class FoodTracker implements Writeable {
     /*MODIFIES: this
      *EFFECTS: Adds food f to foodArray, and adds its nutritional info to the totals.
      */
-    public void addFood(Food f) {
+    public void addFood(Food f) throws NumberFormatException {
         foodArray.add(f);
         addTotal(f);
 
