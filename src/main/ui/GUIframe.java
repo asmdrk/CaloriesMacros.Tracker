@@ -16,16 +16,16 @@ import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-public class MainFrame extends JFrame {
+public class GUIframe extends JFrame {
     private static final String JSON_STORE = "./data/foodtracker.json";
     private FoodTracker ft;
     private final JsonWriter jsonWriter;
     private final JsonReader jsonReader;
-    URL soundbyte = new File("src/main/Sounds/beep-07.wav").toURI().toURL();
+    URL soundbyte = new File("data/beep-07.wav").toURI().toURL();
     java.applet.AudioClip clip = java.applet.Applet.newAudioClip(soundbyte);
 
 
-    public MainFrame(String title) throws MalformedURLException {
+    public GUIframe(String title) throws MalformedURLException {
         super(title);
         ft = new FoodTracker();
         jsonWriter = new JsonWriter(JSON_STORE);
@@ -42,10 +42,10 @@ public class MainFrame extends JFrame {
         JButton buttontotal = new JButton("View Totals");
 
 
-        DetailsPanel detailsPanel = new DetailsPanel();
-        detailsPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        AddFoodPanel addFoodPanel = new AddFoodPanel();
+        addFoodPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 
-        detailsPanel.addDetailListener(new DetailListener() {
+        addFoodPanel.addDetailListener(new DetailListener() {
             public void detailEventOccured(DetailEvent event) {
                 String text = event.getText();
                 Food f = event.getFood();
@@ -82,7 +82,7 @@ public class MainFrame extends JFrame {
                     jsonWriter.open();
                     jsonWriter.write(ft);
                     jsonWriter.close();
-                    ta.append("Saved all the nutritional value and totals to " + JSON_STORE);
+                    ta.append("Saved all the nutritional value and totals to " + JSON_STORE + "\n");
                     clip.play();
 
                 } catch (FileNotFoundException f) {
@@ -112,7 +112,7 @@ public class MainFrame extends JFrame {
         //add to components to pane
         Container c = getContentPane();
 
-        c.add(detailsPanel, BorderLayout.PAGE_END);
+        c.add(addFoodPanel, BorderLayout.PAGE_END);
         c.add(buttonsave, BorderLayout.BEFORE_LINE_BEGINS);
         c.add(buttonload, BorderLayout.AFTER_LINE_ENDS);
         c.add(ta, BorderLayout.CENTER);

@@ -3,10 +3,10 @@ package ui;
 import javax.swing.*;
 import java.net.MalformedURLException;
 
-public class Application {
+public class GUImain {
     public static void main(String[] args) {
         try {
-            JFrame frame = new MainFrame("FoodTracker");
+            JFrame frame = new GUIframe("FoodTracker");
 
 
             SwingUtilities.invokeLater(new Runnable() {

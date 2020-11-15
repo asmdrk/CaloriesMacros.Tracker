@@ -6,12 +6,12 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class DetailsPanel extends JPanel {
+public class AddFoodPanel extends JPanel {
 
     private EventListenerList listenerList = new EventListenerList();
 
 
-    public DetailsPanel() {
+    public AddFoodPanel() {
         JLabel nameLabel = new JLabel("Food Name:");
         JLabel calLabel = new JLabel("Calories:");
         JLabel fatLabel = new JLabel("Fat:");
@@ -34,7 +34,6 @@ public class DetailsPanel extends JPanel {
                 String fat = fatField.getText();
                 String carbs = carbField.getText();
                 String protein = proteinField.getText();
-
 
 
                 fireDetailEvent(new DetailEvent(this, name, cal, fat, carbs, protein));
@@ -116,9 +115,4 @@ public class DetailsPanel extends JPanel {
 
     }
 
-    public void removeDetailListener(DetailListener dl) {
-        listenerList.remove(DetailListener.class, dl);
-
-
-    }
 }
