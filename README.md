@@ -32,3 +32,9 @@ project, but also something that I can use in my life!
 - I want to be able to save the nutritional info I have entered into the application.
 
 - I want to be able to load the nutritional info that I have entered into the application. 
+
+
+## Functionality
+- Can Track the users total Calorie count for the day, along with the associated carbohydrate, fat and protein levels.
+- Can save and load entered food items.
+- There is a GUI and a terminal implementation.
